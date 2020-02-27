@@ -10,5 +10,9 @@
 !apt
 !apt/**
 
+!git
+!git/**
 
+!ohmyzsh
+!ohmyzsh/**
 
