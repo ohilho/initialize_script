@@ -5,10 +5,10 @@
 !README.md
 
 !vim
-!vim/*
 !vim/**
 
-
+!apt
+!apt/**
 
 
 
