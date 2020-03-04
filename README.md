@@ -27,7 +27,7 @@
 
 # Install
 ```
-install.sh
+$ source install.sh
 ```
  
 
