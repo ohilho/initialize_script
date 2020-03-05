@@ -1,8 +1,10 @@
 # install commonly used apt packages
 source ./apt/common.sh
 
-# copy .gitconfig
+# copy configurations
 cp ./git/.gitconfig ${HOME}/.gitconfig
+cp -r ./vim/copy_to_home/.vim ${HOME}/.vim
+cp .vim/copy_to_home/.vimrc ${HOME}/.vimrc
 
 # install oh-my-zsh with zsh-autosuggestions and zsh-syntax-highlighting plugins
 source ./ohmyzsh/ohmyzsh.sh
