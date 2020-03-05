@@ -54,6 +54,7 @@ cd ${HOME}/.vim/colors && \
 wget https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim
 
 # plugin install with vundle
+mv ${HOME}/.vimrc_tmp ${HOME}/.vimrc
 vim +PluginInstall
 
 # compile You complete me
