@@ -1,6 +1,10 @@
 # remove pre-installed binary distribution
 sudo apt remove vim vim-runtime gvim -y;
 
+# copy configuration files
+cp -r $(dirname "$0")/copy_to_home/.vim ${HOME}/.vim
+cp -r $(dirname "$0")/copy_to_home/.vimrc ${HOME}/.vimrc
+
 # install dependencies
 sudo apt install \
 libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev \
@@ -37,8 +41,7 @@ sudo update-alternatives --set vi /usr/bin/vim
 
 # make .vim directory
 mkdir -p ${HOME}/.vim
-cp -r $(dirname "$0")/copy_to_home/.vim ${HOME}/.vim
-cp -r $(dirname "$0")/copy_to_home/.vimrc ${HOME}/.vimrc
+
 
 # clone vundle
 mkdir -p ${HOME}/.vim/bundle && \
