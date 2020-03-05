@@ -2,8 +2,8 @@
 sudo apt remove vim vim-runtime gvim -y;
 
 # copy configuration files
-cp -r $(dirname "$0")/copy_to_home/.vim ${HOME}/.vim
-cp -r $(dirname "$0")/copy_to_home/.vimrc ${HOME}/.vimrc
+cp -r ./copy_to_home/.vim ${HOME}/.vim
+cp -r ./copy_to_home/.vimrc ${HOME}/.vimrc
 
 # install dependencies
 sudo apt install \
