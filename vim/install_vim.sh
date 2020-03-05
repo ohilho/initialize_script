@@ -9,10 +9,10 @@ python3-dev ruby-dev lua5.1 liblua5.1-dev libperl-dev git libxtst-dev \
 ctags cscope -y;
 
 # clone git repository
-git clone https://github.com/vim/vim.git;
+git clone https://github.com/vim/vim.git vim_github;
 
 # change dir to local repository
-cd vim;
+cd vim_github;
 
 # configure build options
 ./configure --with-features=huge \
