@@ -36,13 +36,13 @@ sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1 && \
 sudo update-alternatives --set vi /usr/bin/vim
 
 # make .vim directory
-mkdir -p ~/.vim
-cp -r $(dirname "$0")/copy_to_home/.vim ~/
-cp -r $(dirname "$0")/copy_to_home/.vimrc ~/
+mkdir -p ${HOME}/.vim
+cp -r $(dirname "$0")/copy_to_home/.vim ${HOME}/.vim
+cp -r $(dirname "$0")/copy_to_home/.vimrc ${HOME}/.vimrc
 
 # clone vundle
-mkdir ~/.vim/bundle && \
-cd ~/.vim/bundle && \
+mkdir -p ${HOME}/.vim/bundle && \
+cd ${HOME}/.vim/bundle && \
 git clone https://github.com/VundleVim/Vundle.vim.git
 
 ## taglist
@@ -50,14 +50,15 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 sudo apt install exuberant-ctags -y;
 
 ## color themes
-mkdir ~/.vim/colors && \
-cd ~/.vim/colors && \
+mkdir -p ${HOME}/.vim/colors && \
+cd ${HOME}/.vim/colors && \
 wget https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim
 
 # plugin install with vundle
 vim +PluginInstall
 
 # compile You complete me
-cd ~/.vim/bundle/YouCompleteMe
+cd ${HOME}/.vim/bundle/YouCompleteMe
 sudo apt install cmake -y
 ./install.py --clang-completer
+
