@@ -1,3 +1,6 @@
+#
+PWD=$(pwd)
+echo "Entering ${PWD}"
 # remove pre-installed binary distribution
 sudo apt remove vim vim-runtime gvim -y;
 
@@ -35,4 +38,5 @@ sudo update-alternatives --set editor /usr/bin/vim && \
 sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1 && \
 sudo update-alternatives --set vi /usr/bin/vim
 
-
+# return to the PWD
+cd .. 

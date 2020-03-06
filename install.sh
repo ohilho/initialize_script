@@ -9,9 +9,10 @@ source ./ohmyzsh/ohmyzsh.sh
 
 # install vim
 source ./vim/install_vim.sh
+echo $(pwd)
 
 cp -r ./vim/copy_to_home/.vim ${HOME}/.vim
-cp .vim/copy_to_home/.vimrc ${HOME}/.vimrc
+cp ./vim/copy_to_home/.vimrc ${HOME}/.vimrc
 
 source ./vim/install_plugins.sh
 
