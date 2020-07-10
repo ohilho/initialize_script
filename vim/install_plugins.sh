@@ -14,7 +14,7 @@ wget https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jel
 
 # plugin install with vundle
 mv ${HOME}/.vimrc_tmp ${HOME}/.vimrc
-vim +PluginInstall
+vim +PluginInstall +qall
 
 # compile You complete me
 cd ${HOME}/.vim/bundle/YouCompleteMe
