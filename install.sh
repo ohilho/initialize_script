@@ -1,18 +1,24 @@
-# install commonly used apt packages
-source ./apt/common.sh
+# if you are root user and you don't have sudo yet...
+apt update;
+apt upgrade -y;
+apt install sudo -y;
 
-# copy configurations
-cp ./git/.gitconfig ${HOME}/.gitconfig
+# install commonly used packages
+sudo apt install build-essential git cmake zsh wget curl -y
+
+# # install commonly used apt packages
+# source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/apt/common.sh)
+
+# copy git configurations
+curl https://raw.githubusercontent.com/ohilho/initialize_script/master/git/.gitconfig > ${HOME}/.gitconfig
 
 # install oh-my-zsh with zsh-autosuggestions and zsh-syntax-highlighting plugins
-source ./ohmyzsh/ohmyzsh.sh
+source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/ohmyzsh/ohmyzsh.sh)
+
+# install gtest
+source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/gtest/install_gtest.sh)
 
 # install vim
-source ./vim/install_vim.sh
-echo $(pwd)
-
-cp -r ./vim/copy_to_home/.vim ${HOME}/.vim
-cp ./vim/copy_to_home/.vimrc ${HOME}/.vimrc
-
-source ./vim/install_plugins.sh
+source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/vim/install_vim.sh)
+source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/vim/install_plugins.sh)
 

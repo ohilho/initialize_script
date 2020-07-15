@@ -1,8 +1,4 @@
-# install zsh
-sudo apt install zsh git -y
-
 # install oh-my-zsh
-# sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed "s/exec zsh.*//g")"
 
 # install zsh-autosuggestions
