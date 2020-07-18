@@ -1,5 +1,5 @@
 # clone vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/Vundle.vim
 
 ## color themes
 mkdir -p ${HOME}/.vim/colors && \
