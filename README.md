@@ -27,7 +27,7 @@
 
 # Install
 ```
-$ source install.sh
+$ source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/install.sh)
 ```
  
 
