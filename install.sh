@@ -4,6 +4,8 @@ apt upgrade -y;
 apt install sudo -y;
 
 # install commonly used packages
+sudo apt update;
+sudo apt upgrade -y;
 sudo apt install build-essential git cmake zsh wget curl -y
 
 # # install commonly used apt packages
