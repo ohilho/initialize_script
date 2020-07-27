@@ -24,3 +24,6 @@ source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/m
 source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/vim/install_vim.sh)
 source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/vim/install_plugins.sh)
 
+#install psrcgen
+git clone https://github.com/rise-lab-skku/src_generate_script.git "${HOME}/.custom_tools/psrcgen"
+echo "alias psrcgen=\"source ${HOME}/.custom_tools/psrcgen/psrcgen.sh\"" >> ${HOME}/.zshrc
