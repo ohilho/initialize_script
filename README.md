@@ -26,8 +26,19 @@
   - youcompleteme
 
 # Install
+## install all
 ```
 $ source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/install.sh)
 ```
- 
+
+## install oh-my-zsh
+- you will also have these plugins
+  - zsh-autosuggestions (https://github.com/zsh-users/zsh-autosuggestions)
+  - zsh-syntax-highlighting (https://github.com/zsh-users/zsh-syntax-highlighting)
+- you will also have this theme
+  - powerlevel10k (https://github.com/romkatv/powerlevel10k)
+
+```
+source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/ohmyzsh/ohmyzsh.sh)
+```
 
