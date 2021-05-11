@@ -1,7 +1,16 @@
-cur_dir=$(pwd)
+#! /bin/bash
+BASE_DIR=$(dirname "$0")
+CUR_DIR=$(pwd)
+
+# dependent packages
+apt_pkgs=(git build-essential cmake)
+apt_install_array ${apt_pkgs}
+
 # clone gtest git repository
 git clone https://github.com/google/googletest.git googletest_download;
+
 # build
-cd googletest_download && mkdir build && cd build && cmake .. && sudo make install;
+cd googletest_download && mkdir -p build && cd build && cmake .. && safe_sudo "make install";
+
 # clean up gtest dir
-cd ${cur_dir} && rm -rf googletest_download;
+rm -rf ${CUR_DIR}/googletest_download;
