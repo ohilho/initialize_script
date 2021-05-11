@@ -1,3 +1,11 @@
+#! /bin/bash
+BASE_DIR=$(dirname "$0")
+CUR_DIR=$(pwd)
+
+# dependent packages
+apt_pkgs=(curl sed git zsh)
+apt_install_array ${apt_pkgs}
+
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed "s/exec zsh.*//g")"
 

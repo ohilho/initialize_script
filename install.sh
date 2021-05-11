@@ -1,29 +1,57 @@
-# if you are root user and you don't have sudo yet...
-apt update;
-apt upgrade -y;
-apt install sudo -y;
+#! /bin/bash
 
-# install commonly used packages
-sudo apt update;
-sudo apt upgrade -y;
-sudo apt install build-essential git cmake zsh wget curl -y
+# @brief
+#   Run command with 'sudo' when it is installed, else just run the command without 'sudo'.
+#   In case there is no 'sudo' installed in base image, running 'sudo' makes 'command not found' error.
+#
+# @param $1 : command to run
+function safe_sudo(){
+    local comm=$1
+    if [ -n "$(which sudo)" ]; then
+        sudo $comm
+    else
+        $comm
+    fi    
+}
 
-# # install commonly used apt packages
-# source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/apt/common.sh)
+# @brief 
+#   Install apt packages with safe sudo
+#   Packages to install are passed in the list form.
+#
+# @param $1 : list of apt-get install parameters
+function apt_install_array(){
+    local pkg_list=$1
+    safe_sudo "apt-get install -y ${pkg_list[@]}"
+}
 
-# copy git configurations
-curl https://raw.githubusercontent.com/ohilho/initialize_script/master/git/.gitconfig > ${HOME}/.gitconfig
+# @brief
+#   run apt-get update with safe_sudo
+#
+function apt_update(){
+    safe_sudo "apt-get update"
+}
 
-# install oh-my-zsh with zsh-autosuggestions and zsh-syntax-highlighting plugins
-source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/ohmyzsh/ohmyzsh.sh)
+# @brief
+#   source the shell script from git repository.
+#   'curl' is required.
+function curl_source(){
+    local path=$1
+    source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/feature/safe_sudo/${path})
+}
 
+apt_pkgs=(curl)
+apt_install_array ${apt_pkgs}
+
+# set defualt gitconfig
+curl_source("git/install_gitconfig.sh")
+# install oh-my-zsh with some plugins
+curl_source("ohmyzsh/ohmyzsh.sh")
 # install gtest
-source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/gtest/install_gtest.sh)
+curl_source("gtest/install_gtest.sh")
+# install gtest-runner
+curl_source("gtest/install_gtest-runner.sh")
 
-# install vim
-source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/vim/install_vim.sh)
-source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/vim/install_plugins.sh)
-
-#install psrcgen
+#install custom tools
 git clone https://github.com/rise-lab-skku/src_generate_script.git "${HOME}/.custom_tools/psrcgen"
 echo "alias psrcgen=\"source ${HOME}/.custom_tools/psrcgen/psrcgen.sh\"" >> ${HOME}/.zshrc
+echo "alias psrcgen=\"source ${HOME}/.custom_tools/psrcgen/psrcgen.sh\"" >> ${HOME}/.bashrc
