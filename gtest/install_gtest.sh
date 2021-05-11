@@ -1,7 +1,7 @@
 #! /bin/bash
 BASE_DIR=$(dirname "$0")
 CUR_DIR=$(pwd)
-
+source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/feature/safe_sudo/common.sh)
 # dependent packages
 apt_pkgs=(git build-essential cmake)
 apt_install_array ${apt_pkgs}
