@@ -3,6 +3,7 @@
 !.gitignore
 !README.md
 !install.sh
+!common.sh
 
 !vim
 !vim/**
