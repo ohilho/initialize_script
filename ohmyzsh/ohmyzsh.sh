@@ -1,7 +1,8 @@
 #! /bin/bash
 BASE_DIR=$(dirname "$0")
 CUR_DIR=$(pwd)
-source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/feature/safe_sudo/common.sh)
+URL="https://raw.githubusercontent.com/ohilho/initialize_script/master"
+source <(curl -fsSL ${URL}/common.sh)
 
 # dependent packages
 apt_pkgs=(sed git zsh)
