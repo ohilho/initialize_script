@@ -5,9 +5,6 @@
 !install.sh
 !common.sh
 
-!vim
-!vim/**
-
 !apt
 !apt/**
 
