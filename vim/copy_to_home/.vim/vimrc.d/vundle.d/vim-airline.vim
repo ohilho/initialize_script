@@ -1,1 +1,0 @@
-Plugin 'vim-airline/vim-airline'

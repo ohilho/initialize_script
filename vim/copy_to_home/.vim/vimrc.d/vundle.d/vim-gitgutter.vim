@@ -1,1 +1,0 @@
-Plugin 'airblade/vim-gitgutter'
