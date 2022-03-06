@@ -109,7 +109,8 @@ function install_oh_my_zsh() {
     cd ${CUR_DIR}
 }
 
-echo "functions included:"
-echo "      download_gitconfig()"
-echo "      install_gtest()"
-echo "      install_oh_my_zsh()"
+function show_custom_functions() {
+    echo "download_gitconfig()"
+    echo "install_gtest()"
+    echo "install_oh_my_zsh()"
+}
