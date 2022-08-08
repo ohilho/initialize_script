@@ -20,5 +20,5 @@
 ## load all functions
 
 ```
-$ source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/functions.sh)
+source <(curl -fsSL https://raw.githubusercontent.com/ohilho/initialize_script/master/functions.sh)
 ```
