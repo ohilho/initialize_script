@@ -109,19 +109,59 @@ function install_oh_my_zsh() {
     cd ${CUR_DIR}
 }
 
-function install_chrome(){
+function install_chrome() {
     if [ -n "$(which sudo)" ]; then
         # sudoer version
         wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
         echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-        sudo apt-get update 
+        sudo apt-get update
         sudo apt-get install google-chrome-stable -y
     else
         # root user version
         wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-        echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' |  tee /etc/apt/sources.list.d/google-chrome.list
+        echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | tee /etc/apt/sources.list.d/google-chrome.list
         apt-get update
         apt-get install google-chrome-stable -y
+    fi
+}
+
+function install_ros_noetic() {
+    if [ -n "$(which sudo)" ]; then
+        # sudoer version
+        sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+        sudo apt install curl -y
+        curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+        sudo apt update
+        sudo apt install ros-noetic-desktop-full -y
+        if [ -n "$BASH" ]; then
+            echo "source /opt/ros/noetic/setup.bash" >>~/.bashrc
+            source ~/.bashrc
+        fi
+        if [ -n "$ZSH_NAME" ]; then
+            echo "source /opt/ros/noetic/setup.zsh" >>~/.zshrc
+            source ~/.zshrc
+        fi
+        sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential -y
+        sudo rosdep init
+        rosdep update
+    else
+        # root user version
+        sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+        apt install curl -y
+        curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+        apt update
+        apt install ros-noetic-desktop-full -y
+        if [ -n "$BASH" ]; then
+            echo "source /opt/ros/noetic/setup.bash" >>~/.bashrc
+            source ~/.bashrc
+        fi
+        if [ -n "$ZSH_NAME" ]; then
+            echo "source /opt/ros/noetic/setup.zsh" >>~/.zshrc
+            source ~/.zshrc
+        fi
+        apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential -y
+        rosdep init
+        rosdep update
     fi
 }
 
