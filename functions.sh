@@ -45,9 +45,14 @@ function install_gtest() {
     # directory checkpoint
     CUR_DIR=$(pwd)
 
-    # install dependent packages
-    apt_pkgs=(git build-essential cmake)
-    apt_install_array ${apt_pkgs}
+    # dependent packages
+    if [ -n "$(which sudo)" ]; then
+        # sudoer version
+        sudo apt install git build-essential cmake -y
+    else
+        #root user
+        apt install git build-essential cmake -y
+    fi
 
     # clone gtest git repository
     git clone https://github.com/google/googletest.git googletest_download
@@ -78,8 +83,13 @@ function install_oh_my_zsh() {
     CUR_DIR=$(pwd)
 
     # dependent packages
-    apt_pkgs=(sed git zsh)
-    apt_install_array ${apt_pkgs}
+    if [ -n "$(which sudo)" ]; then
+        # sudoer version
+        sudo apt install sed git zsh -y
+    else
+        #root user
+        apt install sed git zsh -y
+    fi
 
     # install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed "s/exec zsh.*//g")"
@@ -162,6 +172,23 @@ function install_ros_noetic() {
         apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential -y
         rosdep init
         rosdep update
+    fi
+}
+
+function install_catkin_tools() {
+    # install catkin tools
+    if [ -n "$(which sudo)" ]; then
+        # sudoer version
+        sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -sc` main" > /etc/apt/sources.list.d/ros-latest.list'
+        wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+        sudo apt-get update
+        sudo apt-get install python3-catkin-tools
+    else
+        # root user version
+        sh -c 'echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -sc` main" > /etc/apt/sources.list.d/ros-latest.list'
+        wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+        apt-get update
+        apt-get install python3-catkin-tools
     fi
 }
 
