@@ -192,6 +192,23 @@ function install_catkin_tools() {
     fi
 }
 
+function install_anydesk() {
+    # install catkin tools
+    if [ -n "$(which sudo)" ]; then
+        # sudoer version
+        sudo apt install wget -y
+        wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
+        sudo sh -c 'echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list'
+        sudo apt update && sudo apt install anydesk -y
+    else
+        # root user version
+        apt install wget -y
+        wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
+        echo "deb http://deb.anydesk.com/ all main" >/etc/apt/sources.list.d/anydesk-stable.list
+        apt update && apt install anydesk -y
+    fi
+}
+
 function show_custom_functions() {
     echo "download_gitconfig()"
     echo "install_gtest()"
